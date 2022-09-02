@@ -12,7 +12,7 @@ Minimum build of v12.x、v14.x、v16.x Node for Android as of june 1,2022
 
 [GitHub Release](https://github.com/kaniwow/android-node-ci/releases/latest)
 
-[蓝奏云](https://wwu.lanzouw.com/b0csesipg) 访问密码：6ifw
+[GitHub Actions](https://github.com/kaniwow/android-node-ci/actions)
 
 ## 测试
 
