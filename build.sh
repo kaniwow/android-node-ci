@@ -7,6 +7,7 @@ CMD=${1:-build_x86_64}
 # 12.22.12
 # 14.19.3
 # 16.15.1
+# 18.8.0
 TAG=${2:-14.19.3}
 
 download_and_extract() {
@@ -26,6 +27,8 @@ build-android() {
     sed -i "s/.src\/unix\/android-ifaddrs.c.,/'src\/unix\/android-ifaddrs.c','src\/unix\/epoll.c',/g" deps/uv/uv.gyp
   elif [ $ver -eq 16 ]; then
     # disable TRAP_HANDLER，fix error:undefined reference to 'ProbeMemory'
+    sed -i "s|// Setup for shared library export.|#undef V8_TRAP_HANDLER_VIA_SIMULATOR\n#undef V8_TRAP_HANDLER_SUPPORTED\n#define V8_TRAP_HANDLER_SUPPORTED false\n\n// Setup for shared library export.|" deps/v8/src/trap-handler/trap-handler.h
+  elif [ $ver -eq 18 ]; then
     sed -i "s|// Setup for shared library export.|#undef V8_TRAP_HANDLER_VIA_SIMULATOR\n#undef V8_TRAP_HANDLER_SUPPORTED\n#define V8_TRAP_HANDLER_SUPPORTED false\n\n// Setup for shared library export.|" deps/v8/src/trap-handler/trap-handler.h
   fi
 
