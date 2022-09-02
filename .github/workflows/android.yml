@@ -2,9 +2,9 @@ name: Node CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ node18 ]
   pull_request:
-    branches: [ main ]
+    branches: [ node18 ]
 
 jobs:
   build:
