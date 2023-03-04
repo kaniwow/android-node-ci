@@ -14,7 +14,7 @@ download_and_extract() {
 
   curl -L https://github.com/nodejs/node/archive/refs/tags/${FILENAME} > $FILENAME
   tar zxvf "$FILENAME"
-  # cp android-configure node-$TAG/
+  cp android-configure node-$TAG/
 }
 
 
@@ -33,8 +33,8 @@ build-android() {
   fi
 
   # cd  node-$TAG/
-  ./android-configure $ANDROID_NDK_HOME 29 $ANDROID_ABI
-  # ./android-configure $ANDROID_NDK_HOME $ANDROID_ABI 29 $TAG
+  # ./android-configure $ANDROID_NDK_HOME 25 $ANDROID_ABI
+  ./android-configure $ANDROID_NDK_HOME $ANDROID_ABI 24 $TAG
 
 
   make -j4
