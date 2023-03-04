@@ -22,9 +22,10 @@ jobs:
 
     - name: Setup 32-bit dependencies
       run: |
-        sudo dpkg --add-architecture i386
-        sudo apt-get update -y -qq
-        sudo apt-get install -y -qq build-essential gcc-multilib g++-multilib
+        sudo apt-get install python3 g++ make python3-pip
+      # sudo dpkg --add-architecture i386
+      # sudo apt-get update -y -qq
+      # sudo apt-get install -y -qq build-essential gcc-multilib g++-multilib
         
     - name: Set Android NDK
       env:
