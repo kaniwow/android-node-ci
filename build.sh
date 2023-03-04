@@ -27,9 +27,10 @@ build-android() {
   elif [ $ver -eq 16 ]; then
     # disable TRAP_HANDLER，fix error:undefined reference to 'ProbeMemory'
     sed -i "s|// Setup for shared library export.|#undef V8_TRAP_HANDLER_VIA_SIMULATOR\n#undef V8_TRAP_HANDLER_SUPPORTED\n#define V8_TRAP_HANDLER_SUPPORTED false\n\n// Setup for shared library export.|" deps/v8/src/trap-handler/trap-handler.h
-  # elif [ $ver -eq 18 ]; then
+  elif [ $ver -eq 19 ]; then
     # disable TRAP_HANDLER，fix error:undefined reference to 'ProbeMemory'
-    # sed -i "s|// Setup for shared library export.|#undef V8_TRAP_HANDLER_VIA_SIMULATOR\n#undef V8_TRAP_HANDLER_SUPPORTED\n#define V8_TRAP_HANDLER_SUPPORTED false\n\n// Setup for shared library export.|" deps/v8/src/trap-handler/trap-handler.h
+    sed -i "1270d" configure.py
+    sed -i '112a ['\''target_arch=="arm64"'\'', { '\''cflags'\'': ['\''-msign-return-address=all'\''], }],' node.gyp
   fi
 
   # cd  node-$TAG/
